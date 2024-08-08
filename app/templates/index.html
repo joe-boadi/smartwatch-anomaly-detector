@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluetooth Intrusion Detection</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <h1>Bluetooth Intrusion Detection</h1>
+    <button onclick="detectIntrusion()">Detect Intrusion</button>
+    <div id="result"></div>
+    <canvas id="chart" width="400" height="400"></canvas>
+    <script>
+        async function detectIntrusion() {
+            const response = await fetch('/detect');
+            const result = await response.json();
+            document.getElementById('result').innerText = JSON.stringify(result);
+            updateChart(result.data);
+        }
+
+        function updateChart(data) {
+            const ctx = document.getElementById('chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Connection Duration', 'Signal Strength', 'Data Transfer Rate', 'Time of Day'],
+                    datasets: [{
+                        label: 'Bluetooth Data',
+                        data: [data.connection_duration, data.signal_strength, data.data_transfer_rate, data.time_of_day],
+                        backgroundColor: ['rgba(75, 192, 192, 0.2)'],
+                        borderColor: ['rgba(75, 192, 192, 1)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
