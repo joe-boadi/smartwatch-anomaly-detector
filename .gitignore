@@ -1,0 +1,13 @@
+# Include the test files
+text.txt
+# Include the csv files or dataset files
+*.csv
+.csv
+
+# Include all virtual env files
+*venv
+venv
+
+# Ignore VS code settings and Python cache files
+.vscode/ 
+__pycache__
