@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    min-height: 100vh;
+    font-weight: 300;
+    font-family:monospace;
+    margin: auto;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+button {
+    color: #2e2a2a00;
+    background-color: #09aa2900;
+
+    &hover{
+        background-color: #0cca3200;
+        color:#2e2a2a00;
+    }
+}
+
