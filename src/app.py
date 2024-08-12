@@ -1,6 +1,6 @@
 import random
-from src.real_time_detection import classify_connection, block_intrusion 
-from src.model_training import model, scaler
+from model_training import scaler, model
+from real_time_detection import classify_connection, block_intrusion
 from flask import Flask, render_template, jsonify
 
 
